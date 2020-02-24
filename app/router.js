@@ -9,12 +9,12 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('packets', function() {
     this.route('new');
-    this.route('info', function() {
+    this.route('info', {path: ":packet_id"}, function() {
       this.route('edit');
     });
   });
   this.route('bookings', function() {
-    this.route('info');
+    this.route('info', {path: ":booking_id"});
   });
   this.route('login');
 });

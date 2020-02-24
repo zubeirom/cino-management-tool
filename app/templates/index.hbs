@@ -4,25 +4,31 @@
       <h1 class="ui huge dividing header">Dashboard</h1>
       {{#ui-progress percent=model.progress class="grey indicating" id="progress"}}
         <div class="bar"></div>
-        <div class="label">You have made {{model.maxTotal}} this month</div>
+        <div class="label">You have made {{model.maxAmount}}€ this month</div>
       {{/ui-progress}}
       <h2 class="ui medium dividing header">Packets</h2>
       <div class="ui relaxed divided list">
-        {{#each model.events as |event|}}
+        {{#each model.packets as |packet|}}
           <div class="item">
             <div class="content">
               <a class="header">
-                {{event.name}}
+                {{packet.name}}
               </a>
               <div class="meta">
-                <span class="cinema">{{moment-from-now event.date}}</span>
+                <span class="cinema">{{moment-from-now packet.createdAt}}</span>
               </div>
               <div class="description">
-                <p>{{event.note}}</p>
+                <p>{{packet.description}}</p>
               </div>
-              {{#link-to "" event.application.id event.id}}
-                <a class="ui {{event.application.statusColor}} label">Go To Event</a>
-              {{/link-to}}
+              {{#if (eq packet.active true)}}
+                {{#link-to "packets.info" packet.packetId}}
+                  <a class="ui green label">Active</a>
+                {{/link-to}}
+              {{else}}
+                {{#link-to "packets.info" packet.packetId}}
+                  <a class="ui grey label">Not active</a>
+                {{/link-to}}
+              {{/if}}
             </div>
           </div>
         {{/each}}
