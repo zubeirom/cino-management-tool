@@ -1,1 +1,123 @@
-{{outlet}}
+<div class="ui raised secondary segment">
+  <br>
+  <a class="ui black ribbon huge label">{{model.packet.name}}</a><br><br>
+  <span>
+    <h1 class="ui large dividing header">{{model.firstName}} {{model.lastName}} </h1>
+  </span><br>
+  <div class="ui padded stackable grid">
+    <div class="ui eight wide column">
+      <h2 class="ui medium dividing header">Booking Information</h2>
+      <div class="ui form">
+        <div class="field">
+          <label for="">Vorname</label>
+          {{this.model.firstName}}
+        </div>
+        <div class="field">
+          <label for="">Nachname</label>
+          {{this.model.lastName}}
+        </div>
+        <div class="field">
+          <label for="">Paypal-ID</label>
+          {{this.model.paypalId}}
+        </div>
+        <div class="field">
+          <label for="">Email</label>
+          {{#if this.model.email}}
+            {{this.model.email}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Tel </label>
+          {{#if this.model.tel}}
+            {{this.model.tel}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Gesetzter Datum</label>
+          {{#if this.model.scheduledDate}}
+            {{moment-from-now this.model.scheduledDate}} {{model.scheduledDate}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Ende des Packets</label>
+          {{#if this.model.endDate}}
+            {{moment-from-now this.model.endDate}} - {{model.endDate}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Bestellt am</label>
+          {{#if this.model.createdAt}}
+            {{moment-from-now this.model.createdAt}} - {{model.createdAt}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <h2 class="ui medium dividing header">Recruiter</h2>
+        <div class="field">
+          <label for="">Nachricht des Kunden: </label>
+          {{#if this.model.message}}
+            {{this.model.message}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="eight wide column">
+      <h2 class="ui medium dividing header">Packet</h2>
+      <div class="ui form">
+        <div class="field">
+          {{#link-to "packets.info" model.packet.packetId class="ui black link label"}}
+            <i class="right arrow icon"></i> Packet
+          {{/link-to}}
+        </div>
+        <div class="field">
+          <label for="">Name</label>
+          {{this.model.packet.name}}
+        </div>
+        <div class="field">
+          <label for="">Desription</label>
+          {{this.model.packet.description}}
+        </div>
+        <div class="field">
+          <label for="">Eigenschaften</label>
+          {{#each model.packet.packetProperties as |property|}}
+            {{property}}
+          {{/each}}
+        </div>
+        <div class="field">
+          <label for="">Preis</label>
+          {{#if this.model.packet.amount}}
+            {{this.model.packet.amount}} EUR
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Status</label>
+          {{#if (eq this.model.packet.active true)}}
+            <div class="ui green label">Active</div>
+          {{else}}
+            <div class="ui green label">Not Active</div>
+          {{/if}}
+        </div>
+        <div class="field">
+          <label for="">Erstellt am</label>
+          {{#if this.model.createdAt}}
+            {{moment-from-now this.model.createdAt}} {{model.createdAt}}
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

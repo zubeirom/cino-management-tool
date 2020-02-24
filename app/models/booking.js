@@ -8,6 +8,7 @@ export default Model.extend({
   email: DS.attr(),
   tel: DS.attr(),
   packet: DS.attr(),
+  paypalId: DS.attr(),
   scheduledDate: DS.attr(),
   bookingId: DS.attr(),
   endDate: DS.attr(),
