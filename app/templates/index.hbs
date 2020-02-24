@@ -11,9 +11,9 @@
         {{#each model.packets as |packet|}}
           <div class="item">
             <div class="content">
-              <a class="header">
+              {{#link-to "packets.info" packet.packetId class="header"}}
                 {{packet.name}}
-              </a>
+              {{/link-to}}
               <div class="meta">
                 <span class="cinema">{{moment-from-now packet.createdAt}}</span>
               </div>

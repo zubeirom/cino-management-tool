@@ -15,6 +15,9 @@
         {{#link-to "bookings" class="item"}}
           Buchungen
         {{/link-to}}
+        <a class="item">
+          <button class="ui inverted basic button" {{action "invalidate"}} >Logout</button>
+        </a>      
       {{else}}
         {{#link-to "login" class="item"}}
           Login
@@ -46,6 +49,9 @@
         {{#link-to "bookings" class="item"}}
           Buchungen
         {{/link-to}}
+        <a class="item">
+          <button class="ui inverted basic button" {{action "invalidate"}} >Logout</button>
+        </a>
       {{else}}
         {{#link-to "login" class="item"}}
           Login
