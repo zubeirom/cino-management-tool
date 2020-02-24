@@ -9,5 +9,6 @@ export default Model.extend({
   packetType: DS.attr(),
   packetProperties: DS.attr(),
   active: DS.attr(),
-  packetId: DS.attr()
+  packetId: DS.attr(),
+  createdAt: DS.attr(),
 });

@@ -71,42 +71,40 @@
       <table class="ui selectable fixed stackable table">
         <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>Go To Booking</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
             <th>Email</th>
             <th>Tel</th>
             <th>Total</th>
+            <th>Startet am</th>
           </tr>
         </thead>
         <tbody>
-          {{#each model.applications as |application|}}
+          {{#each model.bookings as |booking|}}
             <tr>
               <td>
-                {{#link-to "" application.id}}
-                  <a class="ui  {{application.statusColor}} label"><i class="eye icon"></i> {{application.status}}</a>  
+                {{#link-to "bookings.info" booking.bookingId}}
+                  <a class="ui black icon label"><i class="eye icon"></i>Go to</a>  
                 {{/link-to}}
               </td>
               <td >
-                {{application.company}}
+                {{booking.firstName}}
               </td>
               <td >
-                {{application.occupation}} 
+                {{booking.lastName}} 
               </td>
               <td>
-                {{#if application.deadline}}
-                  {{moment-from-now application.deadline}}
-                {{else}}
-                  <i>Not available</i>
-                {{/if}}
+                <a href="mailto:{{booking.email}}">{{booking.email}}</a>
               </td>
               <td>
-                {{#if application.posting_url}}
-                  <a href={{application.posting_url}} target="_blank" rel="noopener">
-                    <i class="sign in alternate icon"></i>
-                  </a>
-                {{else}}
-                  <i>Not available</i>
-                {{/if}}
+                <a href="tel:{{booking.tel}}">{{booking.tel}}</a>
+              </td>
+              <td>
+                {{booking.packet.amount}}
+              </td>
+              <td>
+                {{moment-from-now booking.scheduledDate}}
               </td>
             </tr>
           {{/each}}
