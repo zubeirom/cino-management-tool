@@ -1,9 +1,27 @@
 import Controller from '@ember/controller';
 import { set } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+    toastr: service('toast'),
+    packetStatus: false,
     types: ["Standard", "Bundle", "Sale"],
     properties: [],
+
+    validateValues() {
+        console.log(this.packetName);
+        console.log(this.packetDescription);
+        console.log(this.packetStatus);
+        console.log(this.type);
+        console.log(this.packetAmount);
+        console.log(this.displayedPrice);
+        console.log(this.properties);
+        if(this.packetName && this.packetDescription && this.type && this.packetAmount && this.displayedPrice) {
+            return true;
+        } else {
+            return false;
+        }
+    },
 
     actions: {
         addKeyword(prop) {
@@ -13,6 +31,29 @@ export default Controller.extend({
 
         deleteKeyword(prop) {
             this.properties.removeObject(prop);
+        },
+
+        async save() {
+            try {
+                if(this.validateValues()) {
+                    const newPacket = await this.store.createRecord('packet', {
+                        name: this.packetName,
+                        description: this.packetDescription,
+                        amount: this.packetAmount,
+                        displayedPrice: this.displayedPrice,
+                        packetType: this.type,
+                        packetProperties: this.properties,
+                        active: this.packetStatus
+                    })
+                    await newPacket.save();
+                    this.router.transitionTo('index')
+                } else {
+                    this.toastr.error("Bitte füllen sie jedes feld aus", "Fehler");
+                }
+            } catch (error) {
+                this.toastr.error("Etwas ist schiefgelaufen", "Fehler")
+                throw error;
+            }
         }
     }
 });

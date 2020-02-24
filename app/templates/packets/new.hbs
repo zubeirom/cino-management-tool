@@ -18,7 +18,7 @@
           </div>
           <div class="required field">
             <label for="">Beschreibe dein Paket in kurzen Sätzen</label>
-            {{textarea value=this.packetDescription placeholder="Enter description..." type="text" }}  
+            {{textarea value=this.packetDescription placeholder="Enter description..." type="text" maxlength="120" }}  
           </div>
           <div class="field">
             <label for="">Status deines Paket</label>
@@ -27,7 +27,7 @@
           </div>
           <div class="field">
             <label for="">Paket Typ</label>
-            {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut gender))}}
+            {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut type))}}
               <div class="default text">Paket Typ</div>
               <i class="dropdown icon"></i>
               <div class="menu">
