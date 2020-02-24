@@ -1,1 +1,111 @@
-{{outlet}}
+<div class="ui raised segment">
+  <div class="ui padded grid">
+    <div class="sixteen wide column">
+      <h1 class="ui huge dividing header">Dashboard</h1>
+      {{#ui-progress percent=model.progress class="grey indicating" id="progress"}}
+        <div class="bar"></div>
+        <div class="label">You have made {{model.maxTotal}} this month</div>
+      {{/ui-progress}}
+      <h2 class="ui medium dividing header">Packets</h2>
+      <div class="ui relaxed divided list">
+        {{#each model.events as |event|}}
+          <div class="item">
+            <div class="content">
+              <a class="header">
+                {{event.name}}
+              </a>
+              <div class="meta">
+                <span class="cinema">{{moment-from-now event.date}}</span>
+              </div>
+              <div class="description">
+                <p>{{event.note}}</p>
+              </div>
+              {{#link-to "" event.application.id event.id}}
+                <a class="ui {{event.application.statusColor}} label">Go To Event</a>
+              {{/link-to}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="ui hidden section divider"></div>
+      <h1 class="ui huge dividing header">Bookings</h1>
+      {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut this.queryType))}}
+        <div class="default text">Search for...</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each this.types as |type|}}
+            <div data-value={{type}} class="item">
+              {{type}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+      {{#if (eq this.queryType "Status")}}
+        {{#ui-dropdown class="search selection" allowAdditions=true selected=this.queryStatus onChange=(action (mut this.queryStatus)) click=(action "queryByStatus") as |execute mapper|}}
+          <div class="default text">Enter status...</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each this.statuses as |status|}}
+              <div data-value={{map-value mapper status}} class="item">
+                {{status}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}} &nbsp;&nbsp;&nbsp;
+        <button class="ui circular inverted blue icon button" {{action "queryByStatus"}} id="backbutton">
+          <i class="filter icon"></i>
+        </button>
+      {{else}}
+        {{#if (eq this.queryType "Company")}}
+          <div class="ui input">
+            {{input value=this.queryCompany placeholder="Enter Company..." keyUp=(action "queryByCompany")}}
+          </div>
+        {{/if}}
+      {{/if}}
+      <table class="ui selectable fixed stackable table">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.applications as |application|}}
+            <tr>
+              <td>
+                {{#link-to "" application.id}}
+                  <a class="ui  {{application.statusColor}} label"><i class="eye icon"></i> {{application.status}}</a>  
+                {{/link-to}}
+              </td>
+              <td >
+                {{application.company}}
+              </td>
+              <td >
+                {{application.occupation}} 
+              </td>
+              <td>
+                {{#if application.deadline}}
+                  {{moment-from-now application.deadline}}
+                {{else}}
+                  <i>Not available</i>
+                {{/if}}
+              </td>
+              <td>
+                {{#if application.posting_url}}
+                  <a href={{application.posting_url}} target="_blank" rel="noopener">
+                    <i class="sign in alternate icon"></i>
+                  </a>
+                {{else}}
+                  <i>Not available</i>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
