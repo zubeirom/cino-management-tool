@@ -39,7 +39,7 @@
         <div class="field">
           <label for="">Gesetzter Datum</label>
           {{#if this.model.scheduledDate}}
-            {{moment-from-now this.model.scheduledDate}} {{model.scheduledDate}}
+            {{moment-from-now this.model.scheduledDate}} - {{model.scheduledDate}}
           {{else}}
             <i>Not Available</i>
           {{/if}}

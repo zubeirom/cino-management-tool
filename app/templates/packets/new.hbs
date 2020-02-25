@@ -1,76 +1,69 @@
-{{#if loader}}
-  <div class="ui black segment">
-    <div class="ui active inverted dimmer">
-      <div class="ui text loader">Saving Application</div>
-    </div><br><br>
-  </div>
-{{else}}
-  <div class="ui raised black segment">
-    <br>
-    <div class="ui padded stackable grid">
-      <h1 class="ui huge dividing black header">New Application</h1>
-      <div class="eight wide column">
-        <h2 class="ui medium dividing header">Required fields</h2>
-        <div class="ui form">
-          <div class="required field">
-            <label for="">Was ist der Name deines Pakets</label>
-            {{input value=this.packetName placeholder="Enter name..." type="text"}}
-          </div>
-          <div class="required field">
-            <label for="">Beschreibe dein Paket in kurzen Sätzen</label>
-            {{textarea value=this.packetDescription placeholder="Enter description..." type="text" maxlength="120" }}  
-          </div>
-          <div class="field">
-            <label for="">Status deines Paket</label>
-            <br>
-            {{ui-checkbox class="toggle" label="Paket Status" checked=this.packetStatus onChange=(action (mut this.packetStatus))}}
-          </div>
-          <div class="field">
-            <label for="">Paket Typ</label>
-            {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut type))}}
-              <div class="default text">Paket Typ</div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each types as |type|}}
-                  <div data-value={{type}} class="item">
-                    {{type}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-          <div class="field">
-            <label for="">Paket Eigenschaften</label>
-            {{input value=this.property placeholder="For e.g. Freier Eintritt zu Events" enter=(action "addKeyword" this.property)}} <br> <br>
-            {{#each properties as |prop|}}
-              <a class="ui label" role="button" {{action "deleteKeyword" prop}}>
-                <i class="trash icon"></i> {{prop}}
-              </a>
-            {{/each}}
-          </div>
+<div class="ui raised black segment">
+  <br>
+  <div class="ui padded stackable grid">
+    <h1 class="ui huge dividing black header">New Application</h1>
+    <div class="eight wide column">
+      <h2 class="ui medium dividing header">Required fields</h2>
+      <div class="ui form">
+        <div class="required field">
+          <label for="">Was ist der Name deines Pakets</label>
+          {{input value=this.packetName placeholder="Enter name..." type="text"}}
+        </div>
+        <div class="required field">
+          <label for="">Beschreibe dein Paket in kurzen Sätzen</label>
+          {{textarea value=this.packetDescription placeholder="Enter description..." type="text" maxlength="120" }}
+        </div>
+        <div class="field">
+          <label for="">Status deines Paket</label>
+          <br>
+          {{ui-checkbox class="toggle" label="Paket Status" checked=this.packetStatus onChange=(action (mut this.packetStatus))}}
+        </div>
+        <div class="field">
+          <label for="">Paket Typ</label>
+          {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut type))}}
+            <div class="default text">Paket Typ</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              {{#each types as |type|}}
+                <div data-value={{type}} class="item">
+                  {{type}}
+                </div>
+              {{/each}}
+            </div>
+          {{/ui-dropdown}}
+        </div>
+        <div class="field">
+          <label for="">Paket Eigenschaften</label>
+          {{input value=this.property placeholder="For e.g. Freier Eintritt zu Events" enter=(action "addKeyword" this.property)}}
+          <br> <br>
+          {{#each properties as |prop|}}
+            <a class="ui label" role="button" {{action "deleteKeyword" prop}}>
+              <i class="trash icon"></i> {{prop}}
+            </a>
+          {{/each}}
         </div>
       </div>
-      <div class="eight wide column">
-        <h2 class="ui medium dividing header">Paket Preis</h2>
-        <div class="ui form">
-          <div class="field">
-            <label for="">Wieviel soll das Paket kosten?</label>
-            {{input value=this.packetAmount placeholder="Enter amount..." type="number"}}
-          </div>
-          <div class="field">
-            <label for="">Was soll auf dem Paket Preis-Badge stehen?</label>
-            {{input value=this.displayedPrice placeholder="Statt 800 nur 400 EUR..." type="text"}}
-          </div>
+    </div>
+    <div class="eight wide column">
+      <h2 class="ui medium dividing header">Paket Preis</h2>
+      <div class="ui form">
+        <div class="field">
+          <label for="">Wieviel soll das Paket kosten?</label>
+          {{input value=this.packetAmount placeholder="Enter amount..." type="number"}}
+        </div>
+        <div class="field">
+          <label for="">Was soll auf dem Paket Preis-Badge stehen?</label>
+          {{input value=this.displayedPrice placeholder="Statt 800 nur 400 EUR..." type="text"}}
         </div>
       </div>
-    </div> <br>
-    {{#link-to "index"}}
-      <button class="ui circular inverted secondary icon button" id="backbutton">
-        <i class="angle left icon"></i>
-      </button>
-    {{/link-to}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button class="ui green {{if save "disabled" ""}}  button" {{action "save"}} type="submit">
-      <i class="save icon"></i>Save Application
+    </div>
+  </div> <br>
+  {{#link-to "index"}}
+    <button class="ui circular inverted secondary icon button" id="backbutton">
+      <i class="angle left icon"></i>
     </button>
-  </div>
-{{/if}}
+  {{/link-to}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="ui green {{if save "disabled" ""}}  button" {{action "save"}} type="submit">
+    <i class="save icon"></i>Save Application
+  </button>
+</div>

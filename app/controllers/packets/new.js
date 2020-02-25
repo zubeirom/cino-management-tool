@@ -4,18 +4,13 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
     toastr: service('toast'),
+    router: service(),
+
     packetStatus: false,
     types: ["Standard", "Bundle", "Sale"],
     properties: [],
 
     validateValues() {
-        console.log(this.packetName);
-        console.log(this.packetDescription);
-        console.log(this.packetStatus);
-        console.log(this.type);
-        console.log(this.packetAmount);
-        console.log(this.displayedPrice);
-        console.log(this.properties);
         if(this.packetName && this.packetDescription && this.type && this.packetAmount && this.displayedPrice) {
             return true;
         } else {
