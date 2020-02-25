@@ -20,9 +20,11 @@
         <i class="angle left icon"></i>
       </button>
     {{/link-to}} &nbsp;&nbsp;&nbsp;
-    <div role="button" class="ui red button" {{action (mut deleteView) true}}>
-      <i class="trash icon"></i> Packet Löschen
-    </div>
+    {{#if (eq model.active false)}}
+      <div role="button" class="ui red button" {{action (mut deleteView) true}}>
+        <i class="trash icon"></i> Packet Löschen
+      </div>
+    {{/if}}
     <script>
       $('.ui.dropdown')
         .dropdown();

@@ -8,6 +8,7 @@ export default Model.extend({
   displayedPrice: DS.attr(),
   packetType: DS.attr(),
   packetProperties: DS.attr(),
+  duration: DS.attr(),
   active: DS.attr(),
   packetId: DS.attr(),
   createdAt: DS.attr(),

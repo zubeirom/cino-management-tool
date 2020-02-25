@@ -1,7 +1,7 @@
 <div class="ui raised black segment">
   <br>
   <div class="ui padded stackable grid">
-    <h1 class="ui huge dividing black header">New Application</h1>
+    <h1 class="ui huge dividing black header">New Packet</h1>
     <div class="eight wide column">
       <h2 class="ui medium dividing header">Required fields</h2>
       <div class="ui form">
@@ -11,12 +11,17 @@
         </div>
         <div class="required field">
           <label for="">Beschreibe dein Paket in kurzen Sätzen</label>
-          {{textarea value=this.packetDescription placeholder="Enter description..." type="text" maxlength="120" }}
+          {{textarea value=this.packetDescription placeholder="Enter description..." type="text" }}
         </div>
         <div class="field">
           <label for="">Status deines Paket</label>
           <br>
           {{ui-checkbox class="toggle" label="Paket Status" checked=this.packetStatus onChange=(action (mut this.packetStatus))}}
+        </div>
+        <div class="field">
+          <label for="">Dauer deines Pakets</label>
+          <br>
+          {{input value=this.duration type="number" placeholder="Enter duration..."}}
         </div>
         <div class="field">
           <label for="">Paket Typ</label>

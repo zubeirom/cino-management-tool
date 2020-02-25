@@ -37,6 +37,7 @@ export default Controller.extend({
                         amount: this.packetAmount,
                         displayedPrice: this.displayedPrice,
                         packetType: this.type,
+                        duration: this.duration,
                         packetProperties: this.properties,
                         active: this.packetStatus
                     })
