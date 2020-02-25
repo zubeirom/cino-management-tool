@@ -10,7 +10,7 @@ export default Controller.extend({
                 await this.model.destroyRecord();
                 this.router.transitionTo('index');
             } catch (error) {
-                throw err;
+                throw error;
             }
         }
     }

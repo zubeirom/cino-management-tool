@@ -12,8 +12,9 @@ export default Route.extend(AuthenticatedRouteMixin, {
     },
 
     afterModel(model) {
-       const sum = model.bookings.toArray().reduce((a, b) => a.packet.amount + b.packet.amount)
+       const totalsArray = model.bookings.toArray().map(booking => booking.packet.amount);
+       const sum = totalsArray.reduce((a, b) => a + b);
        set(model, "maxAmount", sum);
-       set(model, "progress", sum / 1000 * 100)
+       set(model, "progress", sum / 1000 * 100);
     }
 });

@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import ENV from '../config/environment';
-import { isPresent } from '@ember/utils';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import { computed } from '@ember/object';
 
