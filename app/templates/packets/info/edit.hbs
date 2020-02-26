@@ -75,6 +75,14 @@
             {{/if}}
           </div>
           <div class="field">
+            <label for="">Packet Dauer</label>
+            {{#if this.model.duration}}
+              {{this.model.duration}}
+            {{else}}
+              <i>Not Available</i>
+            {{/if}}
+          </div>
+          <div class="field">
             <label for="">Packet Eigentschaften</label>
             {{#if this.model.packetProperties}}
               {{#each model.packetProperties as |property|}}
@@ -123,6 +131,10 @@
                 {{/each}}
               </div>
             {{/ui-dropdown}}
+          </div>
+          <div class="required field">
+            <label for="">Paket Dauer</label>
+            {{input value=this.model.duration type="number"}}
           </div>
           <div class="field">
             <label for="">Paket Eigenschaften</label>

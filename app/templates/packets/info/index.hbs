@@ -72,6 +72,10 @@
           {{/if}}
         </div>
         <div class="field">
+          <label for="">Paket Dauer</label>
+          {{this.model.duration}}
+        </div>
+        <div class="field">
           <label for="">Packet Eigentschaften</label>
           {{#if this.model.packetProperties}}
             {{#each model.packetProperties as |property|}}
