@@ -53,6 +53,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.host = 'http://ec2-34-227-105-87.compute-1.amazonaws.com:3000'
+    ENV['ember-simple-auth'] = {
+      serverTokenEndpoint: 'http://ec2-34-227-105-87.compute-1.amazonaws.com:3000/api/token',
+      routeAfterAuthentication: 'index'
+    };
     // here you can enable a production-specific feature
   }
 
