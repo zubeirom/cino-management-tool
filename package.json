@@ -16,7 +16,7 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "deploy": "rm -rd dist && rm -rf .firebase && ember build --environment=production && firebase deploy"
+    "deploy": "rimraf dist && rimraf .firebase && ember build --environment=production && firebase deploy"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.0",
@@ -63,5 +63,8 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
+  },
+  "dependencies": {
+    "rimraf": "^3.0.2"
   }
 }
