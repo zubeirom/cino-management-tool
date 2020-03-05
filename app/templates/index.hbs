@@ -78,6 +78,7 @@
             <th>Tel</th>
             <th>Total</th>
             <th>Startet am</th>
+            <th>Bestellt am</th>
           </tr>
         </thead>
         <tbody>
@@ -105,6 +106,9 @@
               </td>
               <td>
                 {{moment-from-now booking.scheduledDate}}
+              </td>
+              <td>
+                {{moment-to-now booking.createdAt}}
               </td>
             </tr>
           {{/each}}
