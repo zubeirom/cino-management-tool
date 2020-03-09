@@ -11,7 +11,7 @@
     </h1>
   </span><br>
   {{#if deleteView}}
-    By deleting this Application your are removing all Events and Application Informations <br><br>
+    You sure you want to delete this packet?  <br><br>
     <button class="ui inverted red button" {{action "delete"}}>Continue</button>
     <button class="ui inverted primary button" {{action (mut deleteView) false}}>Cancel</button>
   {{else}}
