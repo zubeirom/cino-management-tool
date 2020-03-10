@@ -37,22 +37,6 @@
           {{/if}}
         </div>
         <div class="field">
-          <label for="">Gesetzter Datum</label>
-          {{#if this.model.scheduledDate}}
-            {{moment-from-now this.model.scheduledDate}} - {{model.scheduledDate}}
-          {{else}}
-            <i>Not Available</i>
-          {{/if}}
-        </div>
-        <div class="field">
-          <label for="">Ende des Packets</label>
-          {{#if this.model.endDate}}
-            {{moment-from-now this.model.endDate}} - {{model.endDate}}
-          {{else}}
-            <i>Not Available</i>
-          {{/if}}
-        </div>
-        <div class="field">
           <label for="">Bestellt am</label>
           {{#if this.model.createdAt}}
             {{moment-from-now this.model.createdAt}} - {{model.createdAt}}

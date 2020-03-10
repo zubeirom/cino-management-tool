@@ -7,7 +7,7 @@ export default Controller.extend({
     router: service(),
 
     packetStatus: false,
-    types: ["Standard", "Bundle", "Sale"],
+    types: ["Standard", "Bundle"],
     properties: [],
 
     validateValues() {

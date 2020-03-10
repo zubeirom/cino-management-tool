@@ -22,11 +22,11 @@
               </div>
               {{#if (eq packet.active true)}}
                 {{#link-to "packets.info" packet.packetId}}
-                  <a class="ui green label">Active</a>
+                  <a class="ui green label">Status: Active</a>
                 {{/link-to}}
               {{else}}
                 {{#link-to "packets.info" packet.packetId}}
-                  <a class="ui grey label">Not active</a>
+                  <a class="ui grey label">Status: Not active</a>
                 {{/link-to}}
               {{/if}}
             </div>
@@ -35,39 +35,6 @@
       </div>
       <div class="ui hidden section divider"></div>
       <h1 class="ui huge dividing header">Bookings</h1>
-      {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut this.queryType))}}
-        <div class="default text">Search for...</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          {{#each this.types as |type|}}
-            <div data-value={{type}} class="item">
-              {{type}}
-            </div>
-          {{/each}}
-        </div>
-      {{/ui-dropdown}}
-      {{#if (eq this.queryType "Status")}}
-        {{#ui-dropdown class="search selection" allowAdditions=true selected=this.queryStatus onChange=(action (mut this.queryStatus)) click=(action "queryByStatus") as |execute mapper|}}
-          <div class="default text">Enter status...</div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            {{#each this.statuses as |status|}}
-              <div data-value={{map-value mapper status}} class="item">
-                {{status}}
-              </div>
-            {{/each}}
-          </div>
-        {{/ui-dropdown}} &nbsp;&nbsp;&nbsp;
-        <button class="ui circular inverted blue icon button" {{action "queryByStatus"}} id="backbutton">
-          <i class="filter icon"></i>
-        </button>
-      {{else}}
-        {{#if (eq this.queryType "Company")}}
-          <div class="ui input">
-            {{input value=this.queryCompany placeholder="Enter Company..." keyUp=(action "queryByCompany")}}
-          </div>
-        {{/if}}
-      {{/if}}
       <table class="ui selectable fixed stackable table">
         <thead>
           <tr>
@@ -103,9 +70,6 @@
               </td>
               <td>
                 {{booking.packet.amount}}
-              </td>
-              <td>
-                {{moment-from-now booking.scheduledDate}}
               </td>
               <td>
                 {{moment-to-now booking.createdAt}}

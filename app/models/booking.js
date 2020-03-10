@@ -9,8 +9,6 @@ export default Model.extend({
   tel: DS.attr(),
   packet: DS.attr(),
   paypalId: DS.attr(),
-  scheduledDate: DS.attr(),
   bookingId: DS.attr(),
-  endDate: DS.attr(),
   createdAt: DS.attr(),
 });
