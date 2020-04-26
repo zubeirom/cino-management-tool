@@ -72,6 +72,14 @@
           {{/if}}
         </div>
         <div class="field">
+          <label for="">Bild Url</label>
+          {{#if this.model.imageUrl}}
+            <a href={{this.model.imageUrl}} target="_blank" rel="noreferrer">Open Image</a>
+          {{else}}
+            <i>Not Available</i>
+          {{/if}}
+        </div>
+        <div class="field">
           <label for="">Paket Dauer</label>
           {{this.model.duration}}
         </div>

@@ -11,5 +11,6 @@ export default Model.extend({
   duration: DS.attr(),
   active: DS.attr(),
   packetId: DS.attr(),
+  imageUrl: DS.attr(),
   createdAt: DS.attr(),
 });

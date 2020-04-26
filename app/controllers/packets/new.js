@@ -11,7 +11,7 @@ export default Controller.extend({
     properties: [],
 
     validateValues() {
-        if(this.packetName && this.packetDescription && this.type && this.packetAmount && this.displayedPrice) {
+        if(this.packetName && this.packetDescription && this.type && this.packetAmount && this.displayedPrice && this.imageUrl) {
             return true;
         } else {
             return false;
@@ -39,6 +39,7 @@ export default Controller.extend({
                         packetType: this.type,
                         duration: this.duration,
                         packetProperties: this.properties,
+                        imageUrl: this.imageUrl,
                         active: this.packetStatus
                     })
                     await newPacket.save();

@@ -4,6 +4,7 @@ import { set } from '@ember/object';
 
 export default Controller.extend({
     router: service(),
+    toastr: service('toast'),
     types: ["Standard", "Bundle", "Sale"],
 
     actions: {
@@ -11,6 +12,7 @@ export default Controller.extend({
             try {
                 await this.model.destroyRecord();
                 this.router.transitionTo('index');
+                this.toastr.success("Deleted packet", "Success!");
             } catch (error) {
                 throw error;
             }
@@ -20,6 +22,7 @@ export default Controller.extend({
             try {
                 set(this.model, "active", !this.model.active);
                 await this.model.save();
+                this.toastr.success(`Set active to: ${this.model.active}`, "Success!");
             } catch (error) {
                 throw error;
             }
@@ -28,6 +31,7 @@ export default Controller.extend({
         async save() {
             try {
                 await this.model.save();
+                this.toastr.success("Updated packet", "Success!");
             } catch (error) {
                 throw error;
             }
