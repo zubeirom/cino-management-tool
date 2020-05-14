@@ -53,9 +53,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.host = 'https://api-stayontrack.azurewebsites.net'
+    ENV.host = 'https://api-stayontrack.herokuapp.com'
     ENV['ember-simple-auth'] = {
-      serverTokenEndpoint: 'https://api-stayontrack.azurewebsites.net/api/token',
+      serverTokenEndpoint: 'https://api-stayontrack.herokuapp.com/api/token',
       routeAfterAuthentication: 'index'
     };
     // here you can enable a production-specific feature
